@@ -107,7 +107,6 @@
             position: relative;
             display: inline-block;
             width: 100%;
-          
             margin: 0 auto;
         }
 
@@ -127,17 +126,16 @@
             filter: drop-shadow(0 0 60px rgba(255, 50, 150, 0.25));
         }
 
-        /* ===== PHOTO OVERLAY (كبيرة في المنتصف) ===== */
+        /* ===== PHOTO OVERLAY (تعديل: لتملأ المربع بالكامل) ===== */
         .photo-wrapper {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 10;
-            width: 100% !important ;    
-            height:100% !important;/* نسبة مئوية لتكون كبيرة ومتناسقة */
-               /* حد أقصى للجوالات الكبيرة */
-            border-radius: 24px;
+            width: 100% !important;    
+            height: 100% !important;
+            border-radius: 20px; /* تطابق انحناء حواف الـ canvas الخلفي */
             border: 4px solid #ff4d8a;
             box-shadow:
                 0 0 30px rgba(255, 77, 138, 0.7),
@@ -151,7 +149,7 @@
         }
 
         .photo-wrapper:hover {
-            transform: translate(-50%, -50%) scale(1.08);
+            transform: translate(-50%, -50%) scale(1.04);
             box-shadow: 0 0 50px rgba(255, 77, 138, 0.9), 0 0 100px rgba(255, 77, 138, 0.4);
         }
 
@@ -325,9 +323,8 @@
             100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(1.8) rotate(720deg); }
         }
 
-        /* ===== RESPONSIVE ===== */
+        /* ===== RESPONSIVE (تعديل: تم حذف قيود أبعاد الصورة هنا) ===== */
         @media (max-width: 500px) {
-            .photo-wrapper { width: 35%; max-width: 160px; }
             .ribbon { padding: 8px 20px; min-width: 140px; }
             .ribbon::before, .ribbon::after { display: none; }
             .name-text::before, .name-text::after { display: none; }
@@ -335,12 +332,7 @@
 
         @media (max-width: 400px) {
             .canvas-wrapper { max-width: 320px; }
-            .photo-wrapper { width: 32%; max-width: 130px; border-width: 3px; }
             .ribbon { padding: 6px 14px; min-width: 110px; }
-        }
-
-        @media (min-width: 600px) {
-            .photo-wrapper { width: 38%; max-width: 240px; }
         }
 
         ::-webkit-scrollbar { width: 0; }
@@ -402,10 +394,9 @@
         <div class="canvas-wrapper">
             <canvas id="heartCanvas" width="600" height="600"></canvas>
 
-            <!-- ===== صورة Celine في منتصف القلب (كبيرة) ===== -->
-            <!-- ★★★ ضع رابط صورتك هنا (cely.jpg) ★★★ -->
+            <!-- ===== صورة Celine في منتصف القلب (تغطي المربع بالكامل) ===== -->
             <div class="photo-wrapper" id="photoWrapper">
-                <img src="cely.jpg" alt="Celine ❤️" id="profilePhoto" / >
+                <img src="cely.jpg" alt="Celine ❤️" id="profilePhoto" />
             </div>
         </div>
 
@@ -427,9 +418,6 @@
     </div>
 
     <script>
-        // ============================================================
-        //  CONFIG
-        // ============================================================
         const CONFIG = {
             heartPoints: 400,
             segments: 600,
@@ -441,9 +429,6 @@
             chaosDecay: 0.985,
         };
 
-        // ============================================================
-        //  CANVAS SETUP
-        // ============================================================
         const canvas = document.getElementById('heartCanvas');
         const ctx = canvas.getContext('2d');
         const W = canvas.width;
@@ -452,9 +437,6 @@
         const cy = H / 2;
         const scale = Math.min(W, H) * 0.22;
 
-        // ============================================================
-        //  HEART PARAMETRIC
-        // ============================================================
         function heartX(t) { return 16 * Math.pow(Math.sin(t), 3); }
         function heartY(t) {
             return 13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t);
@@ -467,9 +449,6 @@
             };
         }
 
-        // ============================================================
-        //  GENERATE POINTS & SEGMENTS
-        // ============================================================
         const rawPoints = [];
         for (let i = 0; i < CONFIG.heartPoints; i++) {
             const t = (i / CONFIG.heartPoints) * 2 * Math.PI;
@@ -612,7 +591,6 @@
             }
         }
 
-        // ===== أحداث النقر =====
         canvas.addEventListener('click', (e) => {
             const x = e.clientX;
             const y = e.clientY;
@@ -632,7 +610,6 @@
             createBurst(touch.clientX, touch.clientY, 25);
         });
 
-        // نقر الصورة (تفاعل إضافي)
         document.getElementById('photoWrapper').addEventListener('click', (e) => {
             e.stopPropagation();
             const rect = e.currentTarget.getBoundingClientRect();
@@ -648,7 +625,6 @@
             }
         });
 
-        // ===== خلفية قلوب عائمة =====
         function spawnFloatingHeart() {
             const container = document.getElementById('floatingHearts');
             const el = document.createElement('div');
@@ -667,10 +643,8 @@
         for (let i = 0; i < 25; i++) setTimeout(spawnFloatingHeart, i * 300);
         setInterval(spawnFloatingHeart, 2000);
 
-        // ===== تحجيم =====
         window.addEventListener('resize', () => { if (drawingComplete) drawHeart(); });
 
-        // ===== بدء التشغيل =====
         setTimeout(() => {
             document.getElementById('loadingOverlay').classList.add('hidden');
         }, 800);
@@ -678,7 +652,6 @@
         drawHeart();
         setTimeout(() => animate(), 400);
 
-        // ===== اختصار لوحة المفاتيح (مسافة) =====
         document.addEventListener('keydown', (e) => {
             if (e.key === ' ' || e.key === 'Space') {
                 e.preventDefault();
@@ -689,14 +662,8 @@
             }
         });
 
-        // ===== رسائل حب في الكونسول =====
         console.log('%c💗 Celine, je t\'aime de tout mon cœur 💗', 'font-size:24px; color:#ff4d8a; font-weight:bold;');
         console.log('%c✨ Mon cœur est à toi pour toujours ✨', 'font-size:18px; color:#ff85b3;');
-        console.log('❤️   ❤️   ❤️   ❤️   ❤️');
-        console.log('   ❤️  CELINE  ❤️');
-        console.log('      I LOVE YOU');
-        console.log('❤️   ❤️   ❤️   ❤️   ❤️');
     </script>
-
 </body>
 </html>
