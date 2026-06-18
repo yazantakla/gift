@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>❤️ For Celine ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,700&display=swap" rel="stylesheet" />
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #0a0010;
+            font-family: 'Playfair Display', serif;
+            overflow: hidden;
+            cursor: default;
+            user-select: none;
+        }
+
+        /* ===== ROMANTIC BACKGROUND ===== */
+        .bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background: radial-gradient(ellipse at 30% 20%, #1a001a 0%, #0d0015 40%, #050008 80%);
+        }
+
+        .bg-canvas::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(2px 2px at 20% 30%, rgba(255, 150, 255, 0.3), transparent),
+                radial-gradient(2px 2px at 40% 70%, rgba(255, 100, 200, 0.2), transparent),
+                radial-gradient(3px 3px at 60% 20%, rgba(255, 200, 255, 0.25), transparent),
+                radial-gradient(2px 2px at 80% 50%, rgba(255, 150, 255, 0.2), transparent),
+                radial-gradient(2px 2px at 10% 80%, rgba(255, 100, 200, 0.15), transparent),
+                radial-gradient(3px 3px at 90% 80%, rgba(255, 200, 255, 0.2), transparent),
+                radial-gradient(2px 2px at 50% 10%, rgba(255, 150, 255, 0.25), transparent),
+                radial-gradient(2px 2px at 70% 60%, rgba(255, 100, 200, 0.15), transparent);
+            background-size: 100% 100%;
+            animation: twinkle 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        /* ===== FLOATING BACKGROUND HEARTS ===== */
+        .floating-hearts-container {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .float-heart {
+            position: absolute;
+            font-size: 22px;
+            opacity: 0;
+            animation: floatUp linear infinite;
+            color: #ff6b9d;
+            text-shadow: 0 0 15px rgba(255, 107, 157, 0.4);
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) rotate(0deg) scale(0.3); opacity: 0; }
+            10% { opacity: 0.7; }
+            90% { opacity: 0.7; }
+            100% { transform: translateY(-10vh) rotate(720deg) scale(1.2); opacity: 0; }
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .main-wrapper {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            width: 100%;
+            max-width: 700px;
+            animation: fadeInWrapper 1.5s ease-out;
+        }
+
+        @keyframes fadeInWrapper {
+            0% { opacity: 0; transform: scale(0.95); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* ===== CANVAS WRAPPER (للصورة والـ canvas) ===== */
+        .canvas-wrapper {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            max-width: 450px;
+            aspect-ratio: 1/1;
+            margin: 0 auto;
+        }
+
+        #heartCanvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            filter: drop-shadow(0 0 40px rgba(255, 50, 150, 0.15));
+            touch-action: none;
+            cursor: pointer;
+            transition: filter 0.3s;
+            background: transparent;
+        }
+
+        #heartCanvas:hover {
+            filter: drop-shadow(0 0 60px rgba(255, 50, 150, 0.25));
+        }
+
+        /* ===== PHOTO OVERLAY (في منتصف القلب) ===== */
+        .photo-wrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            border: 4px solid #ff4d8a;
+            box-shadow:
+                0 0 30px rgba(255, 77, 138, 0.7),
+                0 0 60px rgba(255, 77, 138, 0.3);
+            overflow: hidden;
+            animation: photoPulse 3s ease-in-out infinite alternate;
+            pointer-events: auto;
+            cursor: pointer;
+            transition: transform 0.3s;
+            background: #1a001a;
+        }
+
+        .photo-wrapper:hover {
+            transform: translate(-50%, -50%) scale(1.08);
+            box-shadow: 0 0 50px rgba(255, 77, 138, 0.9), 0 0 100px rgba(255, 77, 138, 0.4);
+        }
+
+        .photo-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        @keyframes photoPulse {
+            0% { box-shadow: 0 0 30px rgba(255, 77, 138, 0.6), 0 0 60px rgba(255, 77, 138, 0.2); border-color: #ff4d8a; }
+            100% { box-shadow: 0 0 50px rgba(255, 77, 138, 0.9), 0 0 100px rgba(255, 77, 138, 0.4); border-color: #ff85b3; }
+        }
+
+        /* ===== NAME ===== */
+        .name-container {
+            margin-top: 8px;
+            text-align: center;
+            position: relative;
+        }
+
+        .name-text {
+            font-family: 'Great Vibes', 'Dancing Script', cursive;
+            font-size: clamp(3rem, 10vw, 5.5rem);
+            font-weight: 700;
+            color: #fff;
+            text-shadow:
+                0 0 10px rgba(255, 100, 200, 0.8),
+                0 0 20px rgba(255, 80, 180, 0.6),
+                0 0 40px rgba(255, 50, 150, 0.4),
+                0 0 80px rgba(255, 20, 120, 0.2),
+                0 0 120px rgba(255, 0, 100, 0.1);
+            letter-spacing: 4px;
+            animation: glowPulse 3s ease-in-out infinite alternate;
+            position: relative;
+            display: inline-block;
+        }
+
+        .name-text::after {
+            content: '✨';
+            position: absolute;
+            right: -40px;
+            top: -10px;
+            font-size: 28px;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+
+        .name-text::before {
+            content: '✨';
+            position: absolute;
+            left: -40px;
+            top: -10px;
+            font-size: 28px;
+            animation: sparkle 2s ease-in-out infinite 0.7s;
+        }
+
+        @keyframes glowPulse {
+            0% { text-shadow: 0 0 10px rgba(255, 100, 200, 0.8), 0 0 20px rgba(255, 80, 180, 0.6), 0 0 40px rgba(255, 50, 150, 0.4); }
+            100% { text-shadow: 0 0 15px rgba(255, 120, 220, 1), 0 0 30px rgba(255, 100, 200, 0.8), 0 0 60px rgba(255, 70, 170, 0.6), 0 0 100px rgba(255, 40, 140, 0.3); }
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.3; transform: scale(0.8) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1.2) rotate(180deg); }
+        }
+
+        /* ===== RIBBON ===== */
+        .ribbon-wrapper {
+            margin-top: 2px;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            padding: 0 10px;
+        }
+
+        .ribbon {
+            position: relative;
+            background: linear-gradient(135deg, #ff4d8a, #ff6b9d, #ff85b3, #ff6b9d, #ff4d8a);
+            background-size: 300% 100%;
+            padding: 10px 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 30px rgba(255, 50, 150, 0.4), inset 0 2px 0 rgba(255,255,255,0.3), inset 0 -2px 0 rgba(0,0,0,0.1);
+            text-align: center;
+            animation: ribbonShimmer 4s ease-in-out infinite, ribbonFloat 3s ease-in-out infinite;
+            min-width: 200px;
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .ribbon::before,
+        .ribbon::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 12px 15px 0 15px;
+            border-color: #ff4d8a transparent transparent transparent;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+
+        .ribbon::before { left: -5px; transform: rotate(-10deg); border-color: #d43a70 transparent transparent transparent; }
+        .ribbon::after { right: -5px; transform: rotate(10deg); border-color: #d43a70 transparent transparent transparent; }
+
+        @keyframes ribbonShimmer {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes ribbonFloat {
+            0%, 100% { transform: translateY(0px) rotate(-0.5deg); }
+            50% { transform: translateY(-4px) rotate(0.5deg); }
+        }
+
+        .ribbon-text {
+            font-family: 'Dancing Script', 'Great Vibes', cursive;
+            font-size: clamp(1.4rem, 4vw, 2.2rem);
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 1px 6px rgba(0,0,0,0.3), 0 0 20px rgba(255,255,255,0.15);
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .ribbon-text .heart-icon {
+            display: inline-block;
+            animation: heartBeat 0.8s ease-in-out infinite alternate;
+            color: #fff;
+            font-size: 0.8em;
+        }
+
+        @keyframes heartBeat {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.3); }
+        }
+
+        /* ===== SUBTEXT ===== */
+        .sub-message {
+            margin-top: 12px;
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(0.9rem, 2vw, 1.3rem);
+            color: rgba(255, 200, 230, 0.5);
+            text-shadow: 0 0 20px rgba(255, 100, 200, 0.1);
+            letter-spacing: 3px;
+            animation: fadeInSub 3s ease-out 1.5s both;
+        }
+
+        @keyframes fadeInSub {
+            0% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== CLICK BURST ===== */
+        .click-burst {
+            position: fixed;
+            pointer-events: none;
+            z-index: 10;
+            font-size: 28px;
+            animation: burstOut 0.8s ease-out forwards;
+        }
+
+        @keyframes burstOut {
+            0% { opacity: 1; transform: translate(0, 0) scale(0.5) rotate(0deg); }
+            100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(1.8) rotate(720deg); }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 500px) {
+            .photo-wrapper { width: 90px; height: 90px; }
+            .ribbon { padding: 8px 20px; min-width: 140px; }
+            .ribbon::before, .ribbon::after { display: none; }
+            .name-text::before, .name-text::after { display: none; }
+        }
+
+        @media (max-width: 400px) {
+            .canvas-wrapper { max-width: 300px; }
+            .photo-wrapper { width: 70px; height: 70px; border-width: 3px; }
+            .ribbon { padding: 6px 14px; min-width: 110px; }
+        }
+
+        ::-webkit-scrollbar { width: 0; }
+
+        /* ===== LOADING OVERLAY ===== */
+        .loading-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            background: #0a0010;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 20px;
+            transition: opacity 1.2s ease, visibility 1.2s ease;
+        }
+
+        .loading-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loading-heart {
+            font-size: 48px;
+            animation: loadingPulse 0.8s ease-in-out infinite alternate;
+            color: #ff4d8a;
+        }
+
+        @keyframes loadingPulse {
+            0% { transform: scale(0.8); opacity: 0.4; }
+            100% { transform: scale(1.2); opacity: 1; }
+        }
+
+        .loading-text {
+            color: rgba(255, 200, 230, 0.6);
+            font-family: 'Dancing Script', cursive;
+            font-size: 18px;
+            letter-spacing: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== LOADING ===== -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-heart">❤️</div>
+        <div class="loading-text">جاري رسم القلب ...</div>
+    </div>
+
+    <!-- ===== BACKGROUND ===== -->
+    <div class="bg-canvas"></div>
+
+    <!-- ===== FLOATING HEARTS ===== -->
+    <div class="floating-hearts-container" id="floatingHearts"></div>
+
+    <!-- ===== MAIN ===== -->
+    <div class="main-wrapper">
+        <div class="canvas-wrapper">
+            <canvas id="heartCanvas" width="600" height="600"></canvas>
+
+            <!-- ===== صورة Celine في منتصف القلب ===== -->
+            <!-- ★★★ ضع رابط صورتك هنا بدلاً من "photo.jpg" ★★★ -->
+            <div class="photo-wrapper" id="photoWrapper">
+                <img src="cely.jpg" alt="Celine ❤️" id="profilePhoto" />
+            </div>
+        </div>
+
+        <div class="name-container">
+            <span class="name-text">Celine</span>
+        </div>
+
+        <div class="ribbon-wrapper">
+            <div class="ribbon">
+                <span class="ribbon-text">
+                    <span class="heart-icon">💗</span>
+                    I Love You
+                    <span class="heart-icon">💗</span>
+                </span>
+            </div>
+        </div>
+
+        <div class="sub-message">✨ Mon cœur est à toi ✨</div>
+    </div>
+
+    <script>
+        // ============================================================
+        //  CONFIG
+        // ============================================================
+        const CONFIG = {
+            heartPoints: 400,
+            segments: 600,
+            drawDelay: 12,
+            neonColor: '#ff4d8a',
+            neonGlow: '#ff1a6b',
+            bgColor: 'rgba(10, 0, 16, 0.15)',
+            chaosOffset: 120,
+            chaosDecay: 0.985,
+        };
+
+        // ============================================================
+        //  CANVAS SETUP
+        // ============================================================
+        const canvas = document.getElementById('heartCanvas');
+        const ctx = canvas.getContext('2d');
+        const W = canvas.width;
+        const H = canvas.height;
+        const cx = W / 2;
+        const cy = H / 2;
+        const scale = Math.min(W, H) * 0.22;
+
+        // ============================================================
+        //  HEART PARAMETRIC
+        // ============================================================
+        function heartX(t) { return 16 * Math.pow(Math.sin(t), 3); }
+        function heartY(t) {
+            return 13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t);
+        }
+
+        function getHeartPoint(t) {
+            return {
+                x: cx + heartX(t) * scale,
+                y: cy - heartY(t) * scale * 0.9,
+            };
+        }
+
+        // ============================================================
+        //  GENERATE POINTS & SEGMENTS
+        // ============================================================
+        const rawPoints = [];
+        for (let i = 0; i < CONFIG.heartPoints; i++) {
+            const t = (i / CONFIG.heartPoints) * 2 * Math.PI;
+            rawPoints.push(getHeartPoint(t));
+        }
+
+        function buildSegments() {
+            const segs = [];
+            const step = Math.floor(CONFIG.heartPoints / CONFIG.segments) + 1;
+
+            for (let i = 0; i < CONFIG.heartPoints; i += step) {
+                const j = (i + step) % CONFIG.heartPoints;
+                const p1 = rawPoints[i];
+                const p2 = rawPoints[j];
+                segs.push({ p1, p2 });
+                if (Math.random() < 0.15) {
+                    const k = (i + Math.floor(Math.random() * 30 + 10)) % CONFIG.heartPoints;
+                    segs.push({ p1: rawPoints[i], p2: rawPoints[k] });
+                }
+            }
+
+            for (let i = segs.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [segs[i], segs[j]] = [segs[j], segs[i]];
+            }
+            return segs;
+        }
+
+        let segments = buildSegments();
+        let currentIndex = 0;
+        let chaosOffset = CONFIG.chaosOffset;
+        let drawingComplete = false;
+
+        function addChaos(p, offset) {
+            const angle = Math.random() * 2 * Math.PI;
+            const dist = offset * (0.5 + Math.random() * 0.5);
+            return {
+                x: p.x + Math.cos(angle) * dist,
+                y: p.y + Math.sin(angle) * dist,
+            };
+        }
+
+        function drawHeart() {
+            ctx.fillStyle = CONFIG.bgColor;
+            ctx.fillRect(0, 0, W, H);
+
+            const count = Math.min(currentIndex, segments.length);
+            ctx.shadowColor = CONFIG.neonGlow;
+            ctx.shadowBlur = 25;
+            ctx.lineWidth = 2.2;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+
+            for (let i = 0; i < count; i++) {
+                const seg = segments[i];
+                let p1 = seg.p1;
+                let p2 = seg.p2;
+                const progress = i / segments.length;
+                const offset = chaosOffset * (1 - progress * 0.9);
+                if (offset > 1) {
+                    const c1 = addChaos(p1, offset * 0.6);
+                    const c2 = addChaos(p2, offset * 0.6);
+                    p1 = c1;
+                    p2 = c2;
+                }
+                const hue = 330 + Math.sin(i * 0.1) * 10;
+                const sat = 90 + Math.sin(i * 0.15) * 10;
+                const lig = 55 + Math.sin(i * 0.2) * 15;
+                ctx.strokeStyle = `hsl(${hue}, ${sat}%, ${lig}%)`;
+                ctx.beginPath();
+                ctx.moveTo(p1.x, p1.y);
+                ctx.lineTo(p2.x, p2.y);
+                ctx.stroke();
+            }
+
+            if (currentIndex >= segments.length) {
+                ctx.shadowBlur = 50;
+                ctx.shadowColor = 'rgba(255, 50, 150, 0.2)';
+                for (let i = 0; i < segments.length; i += 3) {
+                    const seg = segments[i];
+                    ctx.strokeStyle = 'rgba(255, 255, 255, 0.04)';
+                    ctx.lineWidth = 6;
+                    ctx.beginPath();
+                    ctx.moveTo(seg.p1.x, seg.p1.y);
+                    ctx.lineTo(seg.p2.x, seg.p2.y);
+                    ctx.stroke();
+                }
+                ctx.shadowBlur = 0;
+            }
+            ctx.shadowBlur = 0;
+        }
+
+        function animate() {
+            if (currentIndex < segments.length) {
+                const batchSize = Math.max(1, Math.floor(segments.length / 120));
+                for (let i = 0; i < batchSize && currentIndex < segments.length; i++) {
+                    currentIndex++;
+                }
+                chaosOffset *= CONFIG.chaosDecay;
+                if (chaosOffset < 0.5) chaosOffset = 0;
+                drawHeart();
+                if (currentIndex >= segments.length) {
+                    drawingComplete = true;
+                    drawHeart();
+                    createCompletionEffect();
+                }
+                requestAnimationFrame(animate);
+            } else {
+                drawHeart();
+                requestAnimationFrame(animate);
+            }
+        }
+
+        function createCompletionEffect() {
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const x = canvas.getBoundingClientRect().left + Math.random() * canvas.width;
+                    const y = canvas.getBoundingClientRect().top + Math.random() * canvas.height;
+                    createBurst(x, y, 8);
+                }, i * 80);
+            }
+        }
+
+        function createBurst(x, y, count = 15) {
+            const emojis = ['❤️', '💗', '💖', '💕', '💓', '✨', '🌸', '🌺', '💝'];
+            for (let i = 0; i < count; i++) {
+                const el = document.createElement('div');
+                el.className = 'click-burst';
+                el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                const angle = Math.random() * 2 * Math.PI;
+                const dist = 80 + Math.random() * 160;
+                el.style.left = x + 'px';
+                el.style.top = y + 'px';
+                el.style.setProperty('--tx', Math.cos(angle) * dist + 'px');
+                el.style.setProperty('--ty', Math.sin(angle) * dist + 'px');
+                el.style.fontSize = (16 + Math.random() * 28) + 'px';
+                el.style.animationDuration = (0.6 + Math.random() * 0.6) + 's';
+                document.body.appendChild(el);
+                setTimeout(() => el.remove(), 1500);
+            }
+        }
+
+        // ===== أحداث النقر =====
+        canvas.addEventListener('click', (e) => {
+            const x = e.clientX;
+            const y = e.clientY;
+            createBurst(x, y, 20);
+            for (let i = 0; i < 6; i++) {
+                setTimeout(() => {
+                    const fx = x + (Math.random() - 0.5) * 120;
+                    const fy = y + (Math.random() - 0.5) * 120;
+                    createBurst(fx, fy, 5);
+                }, i * 60);
+            }
+        });
+
+        canvas.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            const touch = e.touches[0];
+            createBurst(touch.clientX, touch.clientY, 25);
+        });
+
+        // نقر الصورة (تفاعل إضافي)
+        document.getElementById('photoWrapper').addEventListener('click', (e) => {
+            e.stopPropagation();
+            const rect = e.currentTarget.getBoundingClientRect();
+            const x = rect.left + rect.width / 2;
+            const y = rect.top + rect.height / 2;
+            createBurst(x, y, 35);
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    const fx = x + (Math.random() - 0.5) * 160;
+                    const fy = y + (Math.random() - 0.5) * 160;
+                    createBurst(fx, fy, 6);
+                }, i * 50);
+            }
+        });
+
+        // ===== خلفية قلوب عائمة =====
+        function spawnFloatingHeart() {
+            const container = document.getElementById('floatingHearts');
+            const el = document.createElement('div');
+            el.className = 'float-heart';
+            el.textContent = ['❤️', '💗', '💖', '💕', '💓', '🌸', '✨'][Math.floor(Math.random() * 7)];
+            const size = 14 + Math.random() * 20;
+            el.style.fontSize = size + 'px';
+            el.style.left = Math.random() * 100 + '%';
+            el.style.animationDuration = (12 + Math.random() * 18) + 's';
+            el.style.animationDelay = (Math.random() * 20) + 's';
+            el.style.opacity = (0.3 + Math.random() * 0.4);
+            container.appendChild(el);
+            setTimeout(() => el.remove(), 35000);
+        }
+
+        for (let i = 0; i < 25; i++) setTimeout(spawnFloatingHeart, i * 300);
+        setInterval(spawnFloatingHeart, 2000);
+
+        // ===== تحجيم =====
+        window.addEventListener('resize', () => { if (drawingComplete) drawHeart(); });
+
+        // ===== بدء التشغيل =====
+        setTimeout(() => {
+            document.getElementById('loadingOverlay').classList.add('hidden');
+        }, 800);
+
+        drawHeart();
+        setTimeout(() => animate(), 400);
+
+        // ===== اختصار لوحة المفاتيح (مسافة) =====
+        document.addEventListener('keydown', (e) => {
+            if (e.key === ' ' || e.key === 'Space') {
+                e.preventDefault();
+                const rect = canvas.getBoundingClientRect();
+                const x = rect.left + rect.width / 2 + (Math.random() - 0.5) * 200;
+                const y = rect.top + rect.height / 2 + (Math.random() - 0.5) * 200;
+                createBurst(x, y, 30);
+            }
+        });
+
+        // ===== رسائل حب في الكونسول =====
+        console.log('%c💗 Celine, je t\'aime de tout mon cœur 💗', 'font-size:24px; color:#ff4d8a; font-weight:bold;');
+        console.log('%c✨ Mon cœur est à toi pour toujours ✨', 'font-size:18px; color:#ff85b3;');
+        console.log('❤️   ❤️   ❤️   ❤️   ❤️');
+        console.log('   ❤️  CELINE  ❤️');
+        console.log('      I LOVE YOU');
+        console.log('❤️   ❤️   ❤️   ❤️   ❤️');
+    </script>
+
+</body>
+</html>
