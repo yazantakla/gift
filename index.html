@@ -107,8 +107,7 @@
             position: relative;
             display: inline-block;
             width: 100%;
-            max-width: 480px;
-            aspect-ratio: 1/1;
+          
             margin: 0 auto;
         }
 
@@ -135,15 +134,15 @@
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 10;
-            width: 100%;    
-            height:100%;/* نسبة مئوية لتكون كبيرة ومتناسقة */
+            width: 100% !important ;    
+            height:100% !important;/* نسبة مئوية لتكون كبيرة ومتناسقة */
                /* حد أقصى للجوالات الكبيرة */
-            border-radius: 0px;
+            border-radius: 24px;
             border: 4px solid #ff4d8a;
             box-shadow:
                 0 0 30px rgba(255, 77, 138, 0.7),
                 0 0 60px rgba(255, 77, 138, 0.3);
-            overflow: hidden;
+            overflow: hidden !important;
             animation: photoPulse 3s ease-in-out infinite alternate;
             pointer-events: auto;
             cursor: pointer;
@@ -406,7 +405,7 @@
             <!-- ===== صورة Celine في منتصف القلب (كبيرة) ===== -->
             <!-- ★★★ ضع رابط صورتك هنا (cely.jpg) ★★★ -->
             <div class="photo-wrapper" id="photoWrapper">
-                <img src="cely.jpg" alt="Celine ❤️" id="profilePhoto" />
+                <img src="cely.jpg" alt="Celine ❤️" id="profilePhoto" / >
             </div>
         </div>
 
