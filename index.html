@@ -102,12 +102,12 @@
             100% { opacity: 1; transform: scale(1); }
         }
 
-        /* ===== CANVAS WRAPPER (للصورة والـ canvas) ===== */
+        /* ===== CANVAS WRAPPER ===== */
         .canvas-wrapper {
             position: relative;
             display: inline-block;
             width: 100%;
-            max-width: 450px;
+            max-width: 480px;
             aspect-ratio: 1/1;
             margin: 0 auto;
         }
@@ -128,15 +128,16 @@
             filter: drop-shadow(0 0 60px rgba(255, 50, 150, 0.25));
         }
 
-        /* ===== PHOTO OVERLAY (في منتصف القلب) ===== */
+        /* ===== PHOTO OVERLAY (كبيرة في المنتصف) ===== */
         .photo-wrapper {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 10;
-            width: 200px;          /* ← كبرناها */
-            height: 200px;         /* ← كبرناها */
+            width: 40%;          /* نسبة مئوية لتكون كبيرة ومتناسقة */
+            aspect-ratio: 1/1;
+            max-width: 220px;    /* حد أقصى للجوالات الكبيرة */
             border-radius: 50%;
             border: 4px solid #ff4d8a;
             box-shadow:
@@ -327,16 +328,20 @@
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 500px) {
-            .photo-wrapper { width: 90px; height: 90px; }
+            .photo-wrapper { width: 35%; max-width: 160px; }
             .ribbon { padding: 8px 20px; min-width: 140px; }
             .ribbon::before, .ribbon::after { display: none; }
             .name-text::before, .name-text::after { display: none; }
         }
 
         @media (max-width: 400px) {
-            .canvas-wrapper { max-width: 300px; }
-            .photo-wrapper { width: 70px; height: 70px; border-width: 3px; }
+            .canvas-wrapper { max-width: 320px; }
+            .photo-wrapper { width: 32%; max-width: 130px; border-width: 3px; }
             .ribbon { padding: 6px 14px; min-width: 110px; }
+        }
+
+        @media (min-width: 600px) {
+            .photo-wrapper { width: 38%; max-width: 240px; }
         }
 
         ::-webkit-scrollbar { width: 0; }
@@ -398,8 +403,8 @@
         <div class="canvas-wrapper">
             <canvas id="heartCanvas" width="600" height="600"></canvas>
 
-            <!-- ===== صورة Celine في منتصف القلب ===== -->
-            <!-- ★★★ ضع رابط صورتك هنا بدلاً من "photo.jpg" ★★★ -->
+            <!-- ===== صورة Celine في منتصف القلب (كبيرة) ===== -->
+            <!-- ★★★ ضع رابط صورتك هنا (cely.jpg) ★★★ -->
             <div class="photo-wrapper" id="photoWrapper">
                 <img src="cely.jpg" alt="Celine ❤️" id="profilePhoto" />
             </div>
